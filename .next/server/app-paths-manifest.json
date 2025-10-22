@@ -1,8 +1,1 @@
-{
-  "/api/institutions/route": "app/api/institutions/route.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/api/athletic-records/route": "app/api/athletic-records/route.js",
-  "/api/certificates/route": "app/api/certificates/route.js",
-  "/api/academic-records/route": "app/api/academic-records/route.js",
-  "/institution/page": "app/institution/page.js"
-}
+{}
