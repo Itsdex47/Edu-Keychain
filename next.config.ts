@@ -30,8 +30,8 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  // Ensure proper output for Vercel
-  output: process.env.NODE_ENV === 'production' && process.env.VERCEL ? 'standalone' : undefined,
+  // Standard output for Vercel serverless functions
+  output: 'standalone',
 };
 
 export default nextConfig;
