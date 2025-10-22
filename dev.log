@@ -1,0 +1,73 @@
+[33m[nodemon] 3.1.10[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): server.ts src\**\*[39m
+[33m[nodemon] watching extensions: ts,tsx,js,jsx[39m
+[32m[nodemon] starting `npx tsx server.ts`[39m
+   Downloading swc package @next/swc-wasm-nodejs... to C:\Users\Quake\AppData\Local\next-swc
+ ⚠ Attempted to load @next/swc-win32-x64-msvc, but an error occurred: \\?\D:\GitHub\Edu-Keychain\node_modules\@next\swc-win32-x64-msvc\next-swc.win32-x64-msvc.node is not a valid Win32 application.
+\\?\D:\GitHub\Edu-Keychain\node_modules\@next\swc-win32-x64-msvc\next-swc.win32-x64-msvc.node
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+> Ready on http://127.0.0.1:3000
+> Socket.IO server running at ws://127.0.0.1:3000/api/socketio
+ ○ Compiling / ...
+ ✓ Compiled / in 14s (996 modules)
+ GET / 200 in 15478ms
+ ⚠ Cross origin request detected from 127.0.0.1 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 1369ms (984 modules)
+ GET /favicon.ico 200 in 2045ms
+ GET /avatar.jpg 404 in 1726ms
+ ○ Compiling /institution ...
+ ✓ Compiled /institution in 2.2s (1049 modules)
+ GET /institution 200 in 2789ms
+ ○ Compiling /api/institutions ...
+ ✓ Compiled /api/institutions in 572ms (1056 modules)
+prisma:query SELECT `main`.`institutions`.`id`, `main`.`institutions`.`name`, `main`.`institutions`.`type`, `main`.`institutions`.`address`, `main`.`institutions`.`blockchainAddress`, `main`.`institutions`.`verified`, `main`.`institutions`.`createdAt`, `main`.`institutions`.`updatedAt` FROM `main`.`institutions` WHERE `main`.`institutions`.`name` = ? LIMIT ? OFFSET ?
+ GET /api/institutions?name=Stanford%20University 200 in 801ms
+ ○ Compiling /api/athletic-records ...
+ ✓ Compiled /api/athletic-records in 1517ms (1064 modules)
+prisma:query SELECT `main`.`certificates`.`id`, `main`.`certificates`.`studentId`, `main`.`certificates`.`institutionId`, `main`.`certificates`.`title`, `main`.`certificates`.`description`, `main`.`certificates`.`issueDate`, `main`.`certificates`.`expiryDate`, `main`.`certificates`.`blockchainHash`, `main`.`certificates`.`blockchainTx`, `main`.`certificates`.`fileUrl`, `main`.`certificates`.`status`, `main`.`certificates`.`createdAt`, `main`.`certificates`.`updatedAt` FROM `main`.`certificates` WHERE `main`.`certificates`.`institutionId` = ? ORDER BY `main`.`certificates`.`issueDate` DESC LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`students`.`id`, `main`.`students`.`email`, `main`.`students`.`name`, `main`.`students`.`dateOfBirth`, `main`.`students`.`studentId`, `main`.`students`.`blockchainAddress`, `main`.`students`.`createdAt`, `main`.`students`.`updatedAt` FROM `main`.`students` WHERE `main`.`students`.`id` IN (?,?) LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`institutions`.`id`, `main`.`institutions`.`name`, `main`.`institutions`.`type`, `main`.`institutions`.`address`, `main`.`institutions`.`blockchainAddress`, `main`.`institutions`.`verified`, `main`.`institutions`.`createdAt`, `main`.`institutions`.`updatedAt` FROM `main`.`institutions` WHERE `main`.`institutions`.`id` IN (?) LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`academic_records`.`id`, `main`.`academic_records`.`studentId`, `main`.`academic_records`.`institutionId`, `main`.`academic_records`.`title`, `main`.`academic_records`.`degree`, `main`.`academic_records`.`field`, `main`.`academic_records`.`startDate`, `main`.`academic_records`.`endDate`, `main`.`academic_records`.`grade`, `main`.`academic_records`.`gpa`, `main`.`academic_records`.`blockchainHash`, `main`.`academic_records`.`blockchainTx`, `main`.`academic_records`.`status`, `main`.`academic_records`.`createdAt`, `main`.`academic_records`.`updatedAt` FROM `main`.`academic_records` WHERE `main`.`academic_records`.`institutionId` = ? ORDER BY `main`.`academic_records`.`createdAt` DESC LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`students`.`id`, `main`.`students`.`email`, `main`.`students`.`name`, `main`.`students`.`dateOfBirth`, `main`.`students`.`studentId`, `main`.`students`.`blockchainAddress`, `main`.`students`.`createdAt`, `main`.`students`.`updatedAt` FROM `main`.`students` WHERE `main`.`students`.`id` IN (?,?) LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`institutions`.`id`, `main`.`institutions`.`name`, `main`.`institutions`.`type`, `main`.`institutions`.`address`, `main`.`institutions`.`blockchainAddress`, `main`.`institutions`.`verified`, `main`.`institutions`.`createdAt`, `main`.`institutions`.`updatedAt` FROM `main`.`institutions` WHERE `main`.`institutions`.`id` IN (?) LIMIT ? OFFSET ?
+ GET /api/certificates?institutionId=cmh22riym0000hyqosul48kjh 200 in 1683ms
+ GET /api/academic-records?institutionId=cmh22riym0000hyqosul48kjh 200 in 1688ms
+prisma:query SELECT `main`.`athletic_records`.`id`, `main`.`athletic_records`.`studentId`, `main`.`athletic_records`.`institutionId`, `main`.`athletic_records`.`sport`, `main`.`athletic_records`.`achievement`, `main`.`athletic_records`.`competition`, `main`.`athletic_records`.`date`, `main`.`athletic_records`.`position`, `main`.`athletic_records`.`record`, `main`.`athletic_records`.`blockchainHash`, `main`.`athletic_records`.`blockchainTx`, `main`.`athletic_records`.`status`, `main`.`athletic_records`.`createdAt`, `main`.`athletic_records`.`updatedAt` FROM `main`.`athletic_records` WHERE `main`.`athletic_records`.`institutionId` = ? ORDER BY `main`.`athletic_records`.`date` DESC LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`students`.`id`, `main`.`students`.`email`, `main`.`students`.`name`, `main`.`students`.`dateOfBirth`, `main`.`students`.`studentId`, `main`.`students`.`blockchainAddress`, `main`.`students`.`createdAt`, `main`.`students`.`updatedAt` FROM `main`.`students` WHERE `main`.`students`.`id` IN (?,?) LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`institutions`.`id`, `main`.`institutions`.`name`, `main`.`institutions`.`type`, `main`.`institutions`.`address`, `main`.`institutions`.`blockchainAddress`, `main`.`institutions`.`verified`, `main`.`institutions`.`createdAt`, `main`.`institutions`.`updatedAt` FROM `main`.`institutions` WHERE `main`.`institutions`.`id` IN (?) LIMIT ? OFFSET ?
+ GET /api/athletic-records?institutionId=cmh22riym0000hyqosul48kjh 200 in 1690ms
+ ○ Compiling /verify ...
+ ✓ Compiled /verify in 2.5s (1089 modules)
+ GET /verify 200 in 3056ms
+ ○ Compiling /analytics ...
+ ✓ Compiled /analytics in 954ms (1105 modules)
+ GET /analytics 200 in 1287ms
+ ○ Compiling /api/analytics ...
+ ✓ Compiled /api/analytics in 756ms (1107 modules)
+prisma:query SELECT 1
+prisma:query SELECT `main`.`students`.`id`, `main`.`students`.`email`, `main`.`students`.`name`, `main`.`students`.`dateOfBirth`, `main`.`students`.`studentId`, `main`.`students`.`blockchainAddress`, `main`.`students`.`createdAt`, `main`.`students`.`updatedAt` FROM `main`.`students` WHERE 1=1 LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`academic_records`.`id`, `main`.`academic_records`.`studentId`, `main`.`academic_records`.`institutionId`, `main`.`academic_records`.`title`, `main`.`academic_records`.`degree`, `main`.`academic_records`.`field`, `main`.`academic_records`.`startDate`, `main`.`academic_records`.`endDate`, `main`.`academic_records`.`grade`, `main`.`academic_records`.`gpa`, `main`.`academic_records`.`blockchainHash`, `main`.`academic_records`.`blockchainTx`, `main`.`academic_records`.`status`, `main`.`academic_records`.`createdAt`, `main`.`academic_records`.`updatedAt` FROM `main`.`academic_records` WHERE `main`.`academic_records`.`studentId` IN (?,?,?,?,?) LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`athletic_records`.`id`, `main`.`athletic_records`.`studentId`, `main`.`athletic_records`.`institutionId`, `main`.`athletic_records`.`sport`, `main`.`athletic_records`.`achievement`, `main`.`athletic_records`.`competition`, `main`.`athletic_records`.`date`, `main`.`athletic_records`.`position`, `main`.`athletic_records`.`record`, `main`.`athletic_records`.`blockchainHash`, `main`.`athletic_records`.`blockchainTx`, `main`.`athletic_records`.`status`, `main`.`athletic_records`.`createdAt`, `main`.`athletic_records`.`updatedAt` FROM `main`.`athletic_records` WHERE `main`.`athletic_records`.`studentId` IN (?,?,?,?,?) LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`certificates`.`id`, `main`.`certificates`.`studentId`, `main`.`certificates`.`institutionId`, `main`.`certificates`.`title`, `main`.`certificates`.`description`, `main`.`certificates`.`issueDate`, `main`.`certificates`.`expiryDate`, `main`.`certificates`.`blockchainHash`, `main`.`certificates`.`blockchainTx`, `main`.`certificates`.`fileUrl`, `main`.`certificates`.`status`, `main`.`certificates`.`createdAt`, `main`.`certificates`.`updatedAt` FROM `main`.`certificates` WHERE `main`.`certificates`.`studentId` IN (?,?,?,?,?) LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`verifications`.`id`, `main`.`verifications`.`recordId`, `main`.`verifications`.`recordType`, `main`.`verifications`.`verifierId`, `main`.`verifications`.`verifierType`, `main`.`verifications`.`studentId`, `main`.`verifications`.`blockchainHash`, `main`.`verifications`.`status`, `main`.`verifications`.`comments`, `main`.`verifications`.`createdAt`, `main`.`verifications`.`updatedAt` FROM `main`.`verifications` WHERE `main`.`verifications`.`studentId` IN (?,?,?,?,?) LIMIT ? OFFSET ?
+prisma:query SELECT COUNT(*) AS `_count$_all` FROM (SELECT `main`.`students`.`id` FROM `main`.`students` WHERE 1=1 LIMIT ? OFFSET ?) AS `sub`
+prisma:query SELECT COUNT(*) AS `_count$_all` FROM (SELECT `main`.`academic_records`.`id` FROM `main`.`academic_records` WHERE 1=1 LIMIT ? OFFSET ?) AS `sub`
+prisma:query SELECT COUNT(*) AS `_count$_all` FROM (SELECT `main`.`athletic_records`.`id` FROM `main`.`athletic_records` WHERE 1=1 LIMIT ? OFFSET ?) AS `sub`
+prisma:query SELECT COUNT(*) AS `_count$_all` FROM (SELECT `main`.`certificates`.`id` FROM `main`.`certificates` WHERE 1=1 LIMIT ? OFFSET ?) AS `sub`
+prisma:query SELECT COUNT(*) AS `_count$_all` FROM (SELECT `main`.`verifications`.`id` FROM `main`.`verifications` WHERE 1=1 LIMIT ? OFFSET ?) AS `sub`
+prisma:query SELECT COUNT(*) AS `_count$_all`, `main`.`verifications`.`status` FROM `main`.`verifications` WHERE 1=1 GROUP BY `main`.`verifications`.`status` LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`institutions`.`id`, `main`.`institutions`.`name`, `main`.`institutions`.`type`, `main`.`institutions`.`address`, `main`.`institutions`.`blockchainAddress`, `main`.`institutions`.`verified`, `main`.`institutions`.`createdAt`, `main`.`institutions`.`updatedAt` FROM `main`.`institutions` WHERE 1=1 LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`certificates`.`id`, `main`.`certificates`.`studentId`, `main`.`certificates`.`institutionId`, `main`.`certificates`.`title`, `main`.`certificates`.`description`, `main`.`certificates`.`issueDate`, `main`.`certificates`.`expiryDate`, `main`.`certificates`.`blockchainHash`, `main`.`certificates`.`blockchainTx`, `main`.`certificates`.`fileUrl`, `main`.`certificates`.`status`, `main`.`certificates`.`createdAt`, `main`.`certificates`.`updatedAt` FROM `main`.`certificates` WHERE `main`.`certificates`.`institutionId` IN (?,?,?,?,?) LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`students`.`id`, `main`.`students`.`email`, `main`.`students`.`name`, `main`.`students`.`dateOfBirth`, `main`.`students`.`studentId`, `main`.`students`.`blockchainAddress`, `main`.`students`.`createdAt`, `main`.`students`.`updatedAt` FROM `main`.`students` WHERE `main`.`students`.`id` IN (?,?,?,?,?) LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`academic_records`.`id`, `main`.`academic_records`.`studentId`, `main`.`academic_records`.`institutionId`, `main`.`academic_records`.`title`, `main`.`academic_records`.`degree`, `main`.`academic_records`.`field`, `main`.`academic_records`.`startDate`, `main`.`academic_records`.`endDate`, `main`.`academic_records`.`grade`, `main`.`academic_records`.`gpa`, `main`.`academic_records`.`blockchainHash`, `main`.`academic_records`.`blockchainTx`, `main`.`academic_records`.`status`, `main`.`academic_records`.`createdAt`, `main`.`academic_records`.`updatedAt` FROM `main`.`academic_records` WHERE `main`.`academic_records`.`institutionId` IN (?,?,?,?,?) LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`students`.`id`, `main`.`students`.`email`, `main`.`students`.`name`, `main`.`students`.`dateOfBirth`, `main`.`students`.`studentId`, `main`.`students`.`blockchainAddress`, `main`.`students`.`createdAt`, `main`.`students`.`updatedAt` FROM `main`.`students` WHERE `main`.`students`.`id` IN (?,?,?,?,?) LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`athletic_records`.`id`, `main`.`athletic_records`.`studentId`, `main`.`athletic_records`.`institutionId`, `main`.`athletic_records`.`sport`, `main`.`athletic_records`.`achievement`, `main`.`athletic_records`.`competition`, `main`.`athletic_records`.`date`, `main`.`athletic_records`.`position`, `main`.`athletic_records`.`record`, `main`.`athletic_records`.`blockchainHash`, `main`.`athletic_records`.`blockchainTx`, `main`.`athletic_records`.`status`, `main`.`athletic_records`.`createdAt`, `main`.`athletic_records`.`updatedAt` FROM `main`.`athletic_records` WHERE `main`.`athletic_records`.`institutionId` IN (?,?,?,?,?) LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`students`.`id`, `main`.`students`.`email`, `main`.`students`.`name`, `main`.`students`.`dateOfBirth`, `main`.`students`.`studentId`, `main`.`students`.`blockchainAddress`, `main`.`students`.`createdAt`, `main`.`students`.`updatedAt` FROM `main`.`students` WHERE `main`.`students`.`id` IN (?,?,?,?) LIMIT ? OFFSET ?
+ GET /api/analytics 200 in 1034ms
