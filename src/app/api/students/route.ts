@@ -119,7 +119,7 @@ export async function POST(request: NextRequest) {
         studentId: student.id,
         name: student.name,
         email: student.email,
-        studentId: student.studentId,
+        studentIdCode: student.studentId,
         blockchainAddress: student.blockchainAddress,
         timestamp: new Date().toISOString()
       }

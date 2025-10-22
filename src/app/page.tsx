@@ -240,8 +240,8 @@ export default function EducationalPassport() {
     }
   }
 
-  const handleAcademicRecordAdded = () => {
-    fetchStudentData()
+  const handleAcademicRecordAdded = (document?: any) => {
+    loadMockData()
   }
 
   const handleShareProfile = () => {
@@ -632,7 +632,7 @@ export default function EducationalPassport() {
                   <DocumentUpload 
                     studentId={student.id} 
                     institutionId="demo-institution-001"
-                    onSuccess={handleAcademicRecordAdded}
+                    onUploadComplete={handleAcademicRecordAdded}
                   />
                   <Button disabled>
                     <Plus className="h-4 w-4 mr-2" />
@@ -651,7 +651,7 @@ export default function EducationalPassport() {
                   <DocumentUpload 
                     studentId={student.id} 
                     institutionId="demo-institution-001"
-                    onSuccess={handleAcademicRecordAdded}
+                    onUploadComplete={handleAcademicRecordAdded}
                   />
                 )}
               </CardContent>
@@ -670,7 +670,7 @@ export default function EducationalPassport() {
               <DocumentUpload 
                 studentId={student.id} 
                 institutionId="cmgsgi50s0000t4aqp3fmc343" 
-                onSuccess={handleAcademicRecordAdded} 
+                onUploadComplete={handleAcademicRecordAdded} 
               />
             ) : (
               <Card>

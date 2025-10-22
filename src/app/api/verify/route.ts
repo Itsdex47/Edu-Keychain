@@ -8,7 +8,7 @@ export async function POST(request: NextRequest) {
     const { recordId, recordType, blockchainHash } = body
 
     let isValid = false
-    let record = null
+    let record: any = null
 
     switch (recordType) {
       case 'academic':
@@ -104,8 +104,8 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    let record = null
-    let recordType = null
+    let record: any = null
+    let recordType: any = null
 
     // Search by hash
     if (hash) {

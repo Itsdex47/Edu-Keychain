@@ -64,7 +64,7 @@ async function seedDatabase(databaseUrl: string, authToken?: string) {
 
     // Create Institutions
     console.log('🏫 Creating institutions...')
-    const institutions = []
+    const institutions: any[] = []
     
     const institutionData = [
       {
@@ -126,7 +126,7 @@ async function seedDatabase(databaseUrl: string, authToken?: string) {
 
     // Create Students
     console.log('👨‍🎓 Creating students...')
-    const students = []
+    const students: any[] = []
     
     const studentData = [
       {
@@ -188,7 +188,7 @@ async function seedDatabase(databaseUrl: string, authToken?: string) {
 
     // Create Academic Records
     console.log('📚 Creating academic records...')
-    const academicRecords = []
+    const academicRecords: any[] = []
     
     const academicData = [
       {
@@ -304,7 +304,7 @@ async function seedDatabase(databaseUrl: string, authToken?: string) {
 
     // Create Athletic Records
     console.log('🏆 Creating athletic records...')
-    const athleticRecords = []
+    const athleticRecords: any[] = []
     
     const athleticData = [
       {
@@ -390,7 +390,7 @@ async function seedDatabase(databaseUrl: string, authToken?: string) {
 
     // Create Certificates
     console.log('🏅 Creating certificates...')
-    const certificates = []
+    const certificates: any[] = []
     
     const certificateData = [
       {
