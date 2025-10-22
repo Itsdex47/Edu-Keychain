@@ -87,11 +87,43 @@ export default function EducationalPassport() {
   const [athleticRecords, setAthleticRecords] = useState<AthleticRecord[]>([])
   const [certificates, setCertificates] = useState<Certificate[]>([])
 
-  // Load mock data immediately
+  // Load real data from API
   useEffect(() => {
-    console.log('Component mounted, loading mock data')
-    loadMockData()
+    console.log('Component mounted, loading real data from API')
+    loadRealData()
   }, [])
+
+  const loadRealData = async () => {
+    try {
+      console.log('Fetching real data from API...')
+
+      // Fetch students (get first student for demo)
+      const studentsResponse = await fetch('/api/students')
+      const studentsData = await studentsResponse.json()
+
+      if (studentsData.success && studentsData.data.length > 0) {
+        const firstStudent = studentsData.data[0]
+        setStudent(firstStudent)
+        console.log('Loaded student:', firstStudent.name)
+
+        // Set related records from the student data
+        setAcademicRecords(firstStudent.academicRecords || [])
+        setAthleticRecords(firstStudent.athleticRecords || [])
+        setCertificates(firstStudent.certificates || [])
+
+        console.log(`Loaded ${firstStudent.academicRecords?.length || 0} academic records`)
+        console.log(`Loaded ${firstStudent.athleticRecords?.length || 0} athletic records`)
+        console.log(`Loaded ${firstStudent.certificates?.length || 0} certificates`)
+      } else {
+        console.log('No students found, falling back to mock data')
+        loadMockData()
+      }
+    } catch (error) {
+      console.error('Error loading real data:', error)
+      console.log('Falling back to mock data')
+      loadMockData()
+    }
+  }
 
   const loadMockData = () => {
     console.log('Loading mock data for student portal')

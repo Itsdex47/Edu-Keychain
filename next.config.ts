@@ -13,17 +13,6 @@ const nextConfig: NextConfig = {
       };
     }
 
-    // Handle non-JS files from libSQL packages
-    config.module.rules.push({
-      test: /\.(md|txt|LICENSE)$/,
-      type: 'asset/source',
-    });
-
-    // Ignore problematic files from libSQL packages
-    config.module.rules.push({
-      test: /node_modules\/@libsql\/.*\.(md|txt|LICENSE)$/,
-      type: 'asset/source',
-    });
 
     return config;
   },

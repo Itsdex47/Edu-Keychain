@@ -5,17 +5,10 @@ const globalForPrisma = globalThis as unknown as {
 }
 
 function createPrismaClient() {
-  const databaseUrl = process.env.DATABASE_URL || 'file:./db/custom.db'
+  console.log('🐘 Using Vercel Postgres database')
 
-  // Always use regular Prisma client for now
-  // The libSQL adapter causes build issues on Vercel
   return new PrismaClient({
-    log: process.env.NODE_ENV === 'development' ? ['query'] : [],
-    datasources: {
-      db: {
-        url: databaseUrl
-      }
-    }
+    log: process.env.NODE_ENV === 'development' ? ['query'] : ['error'],
   })
 }
 
