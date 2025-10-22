@@ -12,7 +12,11 @@
     "db:push": "prisma db push",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
-    "db:reset": "prisma migrate reset"
+    "db:reset": "prisma migrate reset",
+    "db:seed": "tsx prisma/seed.ts",
+    "db:seed:prod": "curl -X POST https://your-app.vercel.app/api/seed",
+    "seed:local": "tsx prisma/seed.ts",
+    "seed:production": "curl -X POST https://your-app.vercel.app/api/seed"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
