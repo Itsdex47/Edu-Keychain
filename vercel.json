@@ -19,9 +19,4 @@
       "destination": "/api/socketio-fallback"
     }
   ],
-  "functions": {
-    "src/app/api/**/*.ts": {
-      "maxDuration": 10
-    }
-  }
 }
