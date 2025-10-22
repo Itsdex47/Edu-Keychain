@@ -110,6 +110,110 @@ After deployment, check:
 
 ## Troubleshooting
 
+### 404: NOT_FOUND Error on Vercel
+
+**Problem**: After deployment, visiting your Vercel URL shows `404: NOT_FOUND` with error code `NOT_FOUND`.
+
+**Most Common Causes**:
+
+1. **SQLite Database Issue** (Most Likely)
+   - ⚠️ **This is the primary cause** - SQLite files don't work on Vercel's serverless infrastructure
+   - **Solution**: You MUST migrate to a cloud database before deploying
+
+   **Quick Fix - Use Turso (SQLite-compatible)**:
+   ```bash
+   # 1. Sign up at https://turso.tech (free tier)
+   # 2. Install Turso CLI
+   npm install -g @tursodatabase/turso
+
+   # 3. Create database
+   turso db create edu-keychain
+
+   # 4. Get connection URL
+   turso db show edu-keychain --url
+
+   # 5. Get auth token
+   turso db tokens create edu-keychain
+
+   # 6. Set in Vercel Dashboard → Environment Variables:
+   DATABASE_URL="libsql://your-database.turso.io?authToken=your-token"
+   ```
+
+2. **Missing Environment Variables**
+   - Go to Vercel Dashboard → Your Project → Settings → Environment Variables
+   - **Required variables**:
+     ```
+     DATABASE_URL=your-cloud-database-url
+     NODE_ENV=production
+     NEXTAUTH_URL=https://your-app.vercel.app
+     NEXTAUTH_SECRET=generate-secure-random-string
+     ```
+   - After adding, **redeploy** for changes to take effect
+
+3. **Build Configuration Issues**
+   - Check Vercel Dashboard → Deployments → [Latest] → Build Logs
+   - Look for errors during `prisma generate` or `next build`
+   - Common error: "Can't reach database server"
+
+4. **Output Directory Mismatch**
+   - Verify in Vercel Dashboard → Settings → General:
+     - Framework Preset: **Next.js**
+     - Build Command: (leave default or use `prisma generate && next build`)
+     - Output Directory: (leave default - `.next`)
+     - Install Command: `npm install --legacy-peer-deps`
+
+**Diagnostic Steps**:
+
+1. **Test Health Endpoint**:
+   ```
+   https://your-app.vercel.app/api/health
+   ```
+   - If this returns `{"message":"Good!"}` → API routes work, likely database issue
+   - If this also 404s → Build/routing issue
+
+2. **Check Build Logs**:
+   - Vercel Dashboard → Deployments → [Latest Deployment]
+   - Click "View Build Logs"
+   - Look for:
+     - ❌ Red errors during build
+     - ⚠️ Warnings about missing environment variables
+     - Database connection failures
+
+3. **Check Function Logs**:
+   - Vercel Dashboard → Your Project → Logs
+   - Look for runtime errors when accessing the page
+   - Common: "PrismaClient initialization error"
+
+4. **Verify Deployment Status**:
+   ```bash
+   # Install Vercel CLI
+   npm i -g vercel
+
+   # Check deployment
+   vercel logs your-deployment-url
+   ```
+
+**Step-by-Step Fix**:
+
+```bash
+# 1. Set up cloud database (example with Turso)
+turso db create edu-keychain
+DATABASE_URL=$(turso db show edu-keychain --url)
+AUTH_TOKEN=$(turso db tokens create edu-keychain)
+
+# 2. Update Vercel environment variables
+vercel env add DATABASE_URL
+# Paste: libsql://your-db.turso.io?authToken=your-token
+
+# 3. Redeploy
+git add .
+git commit -m "Fix Vercel 404 - Add cloud database config"
+git push origin main
+
+# Or force redeploy current commit:
+vercel --prod --force
+```
+
 ### "You should not upload the `.next` directory" warning
 - ✅ Fixed with `.gitignore` and `.vercelignore`
 - Make sure to commit both files
@@ -123,11 +227,13 @@ After deployment, check:
 - Check `DATABASE_URL` is set in Vercel environment variables
 - Verify database connection string is correct
 - Ensure build command includes `prisma generate`
+- Try using `postinstall` script to generate Prisma client
 
 ### Database connection fails
 - SQLite won't work on Vercel - must use cloud database
 - Check connection string format matches provider
 - Test connection string locally first
+- For Turso: URL must include `?authToken=...` parameter
 
 ## Recommended Architecture for Production
 

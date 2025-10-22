@@ -1,22 +1,4 @@
 {
-  "version": 2,
-  "buildCommand": "prisma generate && next build",
   "installCommand": "npm install --legacy-peer-deps",
-  "framework": null,
-  "outputDirectory": ".next",
-  "env": {
-    "DATABASE_URL": "file:./db/production.db",
-    "NODE_ENV": "production"
-  },
-  "build": {
-    "env": {
-      "PRISMA_GENERATE_SKIP_AUTOINSTALL": "true"
-    }
-  },
-  "rewrites": [
-    {
-      "source": "/api/socketio",
-      "destination": "/api/socketio-fallback"
-    }
-  ]
+  "buildCommand": "prisma generate && next build"
 }
