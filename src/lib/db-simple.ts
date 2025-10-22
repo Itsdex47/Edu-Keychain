@@ -7,8 +7,8 @@ const globalForPrisma = globalThis as unknown as {
 function createPrismaClient() {
   const databaseUrl = process.env.DATABASE_URL || 'file:./db/custom.db'
 
-  // Always use regular Prisma client for now
-  // The libSQL adapter causes build issues on Vercel
+  // For now, use regular Prisma client without libSQL adapter
+  // This will work for both local SQLite and Turso
   return new PrismaClient({
     log: process.env.NODE_ENV === 'development' ? ['query'] : [],
     datasources: {
