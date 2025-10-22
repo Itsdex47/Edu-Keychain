@@ -1,7 +1,5 @@
-import { PrismaClient } from '@prisma/client'
+import { db as prisma } from '../src/lib/db'
 import { blockchainService, createAcademicHash, createAthleticHash, createCertificateHash } from '../src/lib/blockchain'
-
-const prisma = new PrismaClient()
 
 async function main() {
   console.log('🌱 Starting database seeding...')
