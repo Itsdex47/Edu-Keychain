@@ -27,9 +27,9 @@ Write-Host ""
 try {
     # Run the seeding script
     if ($authToken) {
-        npx tsx seed-turso.ts $databaseUrl $authToken
+        npx tsx seed-turso-direct.ts $databaseUrl $authToken
     } else {
-        npx tsx seed-turso.ts $databaseUrl
+        npx tsx seed-turso-direct.ts $databaseUrl
     }
     
     Write-Host ""

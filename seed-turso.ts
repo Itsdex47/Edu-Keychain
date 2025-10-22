@@ -5,12 +5,20 @@ import { createClient } from '@libsql/client'
 // Initialize Prisma with Turso
 function createPrismaClient(databaseUrl: string, authToken?: string) {
   if (databaseUrl.startsWith('libsql://') || databaseUrl.startsWith('https://')) {
-    const libsql = createClient({
-      url: databaseUrl,
-      authToken: authToken
-    })
-
+    console.log('🔗 Creating libSQL client with URL:', databaseUrl.replace(/\/\/.*@/, '//***@'))
+    console.log('🔑 Auth token provided:', authToken ? 'Yes' : 'No')
+    
+    const clientConfig: any = {
+      url: databaseUrl
+    }
+    
+    if (authToken) {
+      clientConfig.authToken = authToken
+    }
+    
+    const libsql = createClient(clientConfig)
     const adapter = new PrismaLibSQL(libsql)
+    
     return new PrismaClient({
       adapter,
       log: ['query', 'info', 'warn', 'error']
@@ -18,6 +26,7 @@ function createPrismaClient(databaseUrl: string, authToken?: string) {
   }
 
   // Fallback to regular SQLite
+  console.log('📁 Using local SQLite database')
   return new PrismaClient({
     log: ['query', 'info', 'warn', 'error']
   })

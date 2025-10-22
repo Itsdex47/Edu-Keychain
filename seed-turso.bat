@@ -19,9 +19,9 @@ echo Auth Token: %AUTH_TOKEN%
 echo.
 
 if "%AUTH_TOKEN%"=="" (
-    npx tsx seed-turso.ts "%DATABASE_URL%"
+    npx tsx seed-turso-direct.ts "%DATABASE_URL%"
 ) else (
-    npx tsx seed-turso.ts "%DATABASE_URL%" "%AUTH_TOKEN%"
+    npx tsx seed-turso-direct.ts "%DATABASE_URL%" "%AUTH_TOKEN%"
 )
 
 if %ERRORLEVEL% EQU 0 (
