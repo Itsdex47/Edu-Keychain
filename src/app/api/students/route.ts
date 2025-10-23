@@ -4,9 +4,12 @@ import { blockchainService, createAcademicHash, createAthleticHash, createCertif
 
 export async function GET(request: NextRequest) {
   try {
+    console.log('🔍 Students API called');
     const { searchParams } = new URL(request.url)
     const studentId = searchParams.get('studentId')
     const email = searchParams.get('email')
+
+    console.log('Query params:', { studentId, email });
 
     let students
     
@@ -64,6 +67,8 @@ export async function GET(request: NextRequest) {
         }
       })
     }
+
+    console.log('📊 Query result:', students ? (Array.isArray(students) ? students.length : 'single student') : 'null');
 
     return NextResponse.json({ success: true, data: students })
   } catch (error) {
