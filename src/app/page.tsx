@@ -99,9 +99,7 @@ export default function EducationalPassport() {
 
       // Fetch students (get first student for demo)
       const studentsResponse = await fetch('/api/students')
-      console.log('Students response status:', studentsResponse.status)
       const studentsData = await studentsResponse.json()
-      console.log('Students data received:', studentsData)
 
       if (studentsData.success && studentsData.data.length > 0) {
         const firstStudent = studentsData.data[0]
